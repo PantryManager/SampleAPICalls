@@ -1,0 +1,1 @@
+curl -X POST "https://api.nal.usda.gov/fdc/v1/foods/search?api_key=$USDA_FDC_API_KEY" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"query\":\"Abiyuch\",\"dataType\":[\"Foundation\",\"SR Legacy\"],\"pageSize\":25,\"pageNumber\":2,\"sortBy\":\"dataType.keyword\",\"sortOrder\":\"asc\",\"brandOwner\":\"Kar Nut Products Company\"}"
