@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "0809d191-4af1-4815-9a6e-9ff2f4eb51f0",
+		"name": "PantryManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43784267",
+		"_collection_link": "https://vw-11436.postman.co/workspace/VW's-Workspace~b22fd1b7-47d5-4a2f-8b9e-65b7bac9b921/collection/43784267-0809d191-4af1-4815-9a6e-9ff2f4eb51f0?action=share&source=collection_link&creator=43784267"
+	},
+	"item": [
+		{
+			"name": "foods/search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nal.usda.gov/fdc/v1/foods/search?api_key={{usda_key}}&query=cooked carrot&dataType=Foundation,SR_Legacy,Branded&pageSize=25&pageNumber",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nal",
+						"usda",
+						"gov"
+					],
+					"path": [
+						"fdc",
+						"v1",
+						"foods",
+						"search"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{usda_key}}",
+							"description": "\n"
+						},
+						{
+							"key": "query",
+							"value": "cooked carrot",
+							"description": "One or more search terms. The string may include search operators (https://fdc.nal.usda.gov/help#bkmk-2)"
+						},
+						{
+							"key": "dataType",
+							"value": "Foundation,SR_Legacy,Branded",
+							"description": "Optional. Filter on a specific data type; specify one or more values in an array."
+						},
+						{
+							"key": "pageSize",
+							"value": "25",
+							"description": "Optional. Maximum number of results to return for the current page. Default is 50."
+						},
+						{
+							"key": "pageNumber",
+							"value": null,
+							"description": "Optional. Page number to retrieve. The offset into the overall result set is expressed as (pageNumber * pageSize)"
+						},
+						{
+							"key": "sortBy",
+							"value": "description",
+							"description": "Optional. Specify one of the possible values to sort by that field. Note, dataType.keyword will be dataType and lowercaseDescription.keyword will be description in future releases.",
+							"disabled": true
+						},
+						{
+							"key": "sortOrder",
+							"value": "asc",
+							"description": "Optional. The sort direction for the results. Only applicable if sortBy is specified.",
+							"disabled": true
+						},
+						{
+							"key": "brandOwner",
+							"value": "Kar%20Nut%20Products%20Company",
+							"description": "Optional. Filter results based on the brand owner of the food. Only applies to Branded Foods",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "foods/list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nal.usda.gov/fdc/v1/foods/list?dataType=Foundation,SR_Legacy,Branded",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nal",
+						"usda",
+						"gov"
+					],
+					"path": [
+						"fdc",
+						"v1",
+						"foods",
+						"list"
+					],
+					"query": [
+						{
+							"key": "dataType",
+							"value": "Foundation,SR_Legacy,Branded",
+							"description": "Optional. Filter on a specific data type; specify one or more values in an array."
+						},
+						{
+							"key": "pageSize",
+							"value": "25",
+							"description": "Optional. Maximum number of results to return for the current page. Default is 50.",
+							"disabled": true
+						},
+						{
+							"key": "pageNumber",
+							"value": "1",
+							"description": "Optional. Page number to retrieve. The offset into the overall result set is expressed as (pageNumber * pageSize)",
+							"disabled": true
+						},
+						{
+							"key": "sortBy",
+							"value": null,
+							"description": "Optional. Specify one of the possible values to sort by that field. Note, dataType.keyword will be dataType and lowercaseDescription.keyword will be description in future releases.",
+							"disabled": true
+						},
+						{
+							"key": "sortOrder",
+							"value": null,
+							"description": "Optional. The sort direction for the results. Only applicable if sortBy is specified.",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "foods",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nal.usda.gov/fdc/v1/foods?api_key={{usda_key}}&fdcIds=2258587",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nal",
+						"usda",
+						"gov"
+					],
+					"path": [
+						"fdc",
+						"v1",
+						"foods"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{usda_key}}"
+						},
+						{
+							"key": "fdcIds",
+							"value": "2258587",
+							"description": "List of multiple FDC ID's. Should be comma separated list (e.g. fdcIds=534358,373052) or repeating parameters (e.g. fdcIds=534358&fdcIds=373052)."
+						},
+						{
+							"key": "format",
+							"value": null,
+							"description": "Optional. 'abridged' for an abridged set of elements, 'full' for all elements (default).",
+							"disabled": true
+						},
+						{
+							"key": "nutrients",
+							"value": null,
+							"description": "Optional. List of up to 25 nutrient numbers. Only the nutrient information for the specified nutrients will be returned. Should be comma separated list (e.g. nutrients=203,204) or repeating parameters (e.g. nutrients=203&nutrients=204). If a food does not have any matching nutrients, the food will be returned with an empty foodNutrients element.",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "food/{fdcId}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nal.usda.gov/fdc/v1/food/2258587?api_key={{usda_key}}&format=abridged",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nal",
+						"usda",
+						"gov"
+					],
+					"path": [
+						"fdc",
+						"v1",
+						"food",
+						"2258587"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{usda_key}}"
+						},
+						{
+							"key": "format",
+							"value": "abridged",
+							"description": "Optional. 'abridged' for an abridged set of elements, 'full' for all elements (default)."
+						},
+						{
+							"key": "nutrients",
+							"value": null,
+							"description": "Optional. List of up to 25 nutrient numbers. Only the nutrient information for the specified nutrients will be returned. Should be comma separated list (e.g. nutrients=203,204) or repeating parameters (e.g. nutrients=203&nutrients=204). If a food does not have any matching nutrients, the food will be returned with an empty foodNutrients element.",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
